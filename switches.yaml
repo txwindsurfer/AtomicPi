@@ -1,0 +1,22 @@
+- platform: mqtt
+  name: "Studio Lights"
+  state_topic: "smartthings/Studio Lights/switch"
+  command_topic: "smartthings/Studio Lights/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Entry Lamp"
+  state_topic: "smartthings/Entry Lamp/switch"
+  command_topic: "smartthings/Entry Lamp/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Hot Water Heater"
+  state_topic: "smartthings/Hot Water Heater/switch"
+  command_topic: "smartthings/Hot Water Heater/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+  

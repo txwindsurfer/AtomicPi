@@ -1,0 +1,162 @@
+  - platform: honeywell
+    username: !secret honeywell_uname
+    password: !secret honeywell_password
+    scan_interval: 600
+    region: us
+    away_cool_temperature: 83
+    away_heat_temperature: 65
+  - platform: mqtt
+    name: Gameroom
+#    optimistic: false
+    retain: false
+    qos: 0
+    modes:
+      - "off"
+      - "heat"
+      - "cool"
+      - "auto"
+      - "emergency heat"
+    swing_modes:
+      - "idle"
+      - "cooling"
+      - "heating"
+    fan_modes:
+      - "on"
+      - "auto"
+      - "off"
+    current_temperature_topic: "smartthings/Gameroom Thermostat/temperature"
+#    target_temperature_high: "smartthings/Gameroom Thermostat/coolingSetpoint"
+#    target_temperature_low: "smartthings/Gameroom Thermostat/heatingSetpoint"
+    temperature_command_topic: "smartthings/Gameroom Thermostat/coolingSetpoint"
+    temperature_state_topic: "smartthings/Gameroom Thermostat/thermostatSetpoint"
+    mode_state_topic: "smartthings/Gameroom Thermostat/thermostatMode"
+    mode_command_topic: "smartthings/Gameroom Thermostat/thermostatMode"
+    fan_mode_command_topic: "smartthings/Gameroom Thermostat/thermostatFanMode"
+    fan_mode_state_topic: "smartthings/Gameroom Thermostat/thermostatFanMode"
+#    activity_state_topic: "smartthings/Gameroom Thermostat/thermostatOperatingState"
+# 123's custom code as my_mqtt use this but not sure how to display it
+    swing_mode_command_topic: "smartthings/Gameroom Thermostat/thermostatOperatingState"
+    swing_mode_state_topic: "smartthings/Gameroom Thermostat/thermostatOperatingState"
+#    temperature_unit: "fahrenheit"
+    max_temp: "95"
+    min_temp: "45"
+
+  - platform: mqtt
+    name: BrownRoom
+    modes:
+      - "off"
+      - "heat"
+      - "cool"
+      - "auto"
+      - "emergency heat"
+    swing_modes:
+      - "idle"
+      - "cooling"
+      - "heating"
+    fan_modes:
+      - "on"
+      - "auto"
+      - "off"
+    current_temperature_topic: "smartthings/Brown Room Thermostat/temperature"
+    temperature_command_topic: "smartthings/Brown Room Thermostat/coolingSetpoint"
+    temperature_state_topic: "smartthings/Brown Room Thermostat/thermostatSetpoint"
+    mode_state_topic: "smartthings/Brown Room Thermostat/thermostatMode"
+    mode_command_topic: "smartthings/Brown Room Thermostat/thermostatMode"
+    fan_mode_command_topic: "smartthings/Brown Room Thermostat/thermostatFanMode"
+    fan_mode_state_topic: "smartthings/Brown Room Thermostat/thermostatFanMode"
+    swing_mode_command_topic: "smartthings/Brown Room Thermostat/thermostatOperatingState"
+    swing_mode_state_topic: "smartthings/Brown Room Thermostat/thermostatOperatingState"
+#    temperature_unit: "fahrenheit"
+    max_temp: "95"
+    min_temp: "45"
+    retain: false
+
+  - platform: mqtt
+    name: YellowRoom
+    modes:
+      - "off"
+      - "heat"
+      - "cool"
+      - "auto"
+      - "emergency heat"
+    swing_modes:
+      - "idle"
+      - "cooling"
+      - "heating"
+    fan_modes:
+      - "on"
+      - "auto"
+      - "off"
+    current_temperature_topic: "smartthings/Yellow Room Thermostat/temperature"
+    temperature_command_topic: "smartthings/Yellow Room Thermostat/coolingSetpoint"
+    temperature_state_topic: "smartthings/Yellow Room Thermostat/thermostatSetpoint"
+    mode_state_topic: "smartthings/Yellow Room Thermostat/thermostatMode"
+    mode_command_topic: "smartthings/Yellow Room Thermostat/thermostatMode"
+    fan_mode_command_topic: "smartthings/Yellow Room Thermostat/thermostatFanMode"
+    fan_mode_state_topic: "smartthings/Yellow Room Thermostat/thermostatFanMode"
+    swing_mode_command_topic: "smartthings/Yellow Room Thermostat/thermostatOperatingState"
+    swing_mode_state_topic: "smartthings/Yellow Room Thermostat/thermostatOperatingState"
+#    temperature_unit: "fahrenheit"
+    max_temp: "95"
+    min_temp: "45"
+    retain: false
+
+  - platform: mqtt
+    name: KidsRoom
+    modes:
+      - "off"
+      - "heat"
+      - "cool"
+      - "auto"
+      - "emergency heat"
+    swing_modes:
+      - "idle"
+      - "cooling"
+      - "heating"
+    fan_modes:
+      - "on"
+      - "auto"
+      - "off"
+    current_temperature_topic: "smartthings/Kids Room Thermostat/temperature"
+    temperature_command_topic: "smartthings/Kids Room Thermostat/coolingSetpoint"
+    temperature_state_topic: "smartthings/Kids Room Thermostat/thermostatSetpoint"
+    mode_state_topic: "smartthings/Kids Room Thermostat/thermostatMode"
+    mode_command_topic: "smartthings/Kids Room Thermostat/thermostatMode"
+    fan_mode_command_topic: "smartthings/Kids Room Thermostat/thermostatFanMode"
+    fan_mode_state_topic: "smartthings/Kids Room Thermostat/thermostatFanMode"
+    swing_mode_command_topic: "smartthings/Kids Room Thermostat/thermostatOperatingState"
+    swing_mode_state_topic: "smartthings/Kids Room Thermostat/thermostatOperatingState"
+#    temperature_unit: "fahrenheit"
+    max_temp: "95"
+    min_temp: "45"
+    retain: false
+
+  - platform: mqtt
+    name: Theater
+    modes:
+      - "off"
+      - "heat"
+      - "cool"
+      - "auto"
+      - "emergency heat"
+    swing_modes:
+      - "idle"
+      - "cooling"
+      - "heating"
+    fan_modes:
+      - "on"
+      - "auto"
+      - "off"
+    current_temperature_topic: "smartthings/Theater Thermostat/temperature"
+    temperature_command_topic: "smartthings/Theater Thermostat/coolingSetpoint"
+    temperature_state_topic: "smartthings/Theater Thermostat/thermostatSetpoint"
+    mode_state_topic: "smartthings/Theater Thermostat/thermostatMode"
+    mode_command_topic: "smartthings/Theater Thermostat/thermostatMode"
+    fan_mode_command_topic: "smartthings/Theater Thermostat/thermostatFanMode"
+    fan_mode_state_topic: "smartthings/Theater Thermostat/thermostatFanMode"
+    swing_mode_command_topic: "smartthings/Theater Thermostat/thermostatOperatingState"
+    swing_mode_state_topic: "smartthings/Theater Thermostat/thermostatOperatingState"
+#    temperature_unit: "fahrenheit"
+    max_temp: "95"
+    min_temp: "45"
+    retain: false

@@ -1,0 +1,222 @@
+- id: automation.Everybody_Leaves
+  alias: Turn off devices and lowe thermostats when everybody leaves
+  initial_state: 'true'
+  trigger:
+  - entity_id: person.glenda_ramsower_2
+    from: present
+    platform: state
+  - entity_id: person.reagan_ramsower
+    from: present
+    platform: state
+  action:
+  - entity_id: climate.bedroom
+    service: climate.set_away_mode
+- id: automation.Front_Lights_On
+  alias: Turn on front lights when there is hallway movement
+  initial_state: 'true'
+  trigger:
+  - entity_id: binary_sensor.entry_sensor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - after: sunset
+      condition: sun
+    - before: sunrise
+      condition: sun
+  action:
+     entity_id: scene.front_on
+     service: scene.turn_on
+- id: automation.Front_Lights_Off
+  alias: Turn off front lights 10 minutes after last hallway movement
+  initial_state: 'true'
+  trigger:
+  - entity_id: binary_sensor.entry_sensor_motion
+    for:
+      minutes: 10
+    platform: state
+    to: 'off'
+  condition:
+  - condition: or
+    conditions:
+    - after: sunset
+      condition: sun
+    - before: sunrise
+      condition: sun
+  action:
+     entity_id: scene.front_off
+     service: scene.turn_on
+- id: automation.Bird_Lamps_On
+  alias: Turn on Bird Lamps when Living Room Accents are turned on
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.living_room_picture_accents
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.bird_lamps
+- id: automation.Bird_Lamps_Off
+  alias: Turn off Bird Lamps when Living Room Accents are turned off
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.living_room_picture_accents
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.bird_lamps
+- id: automation.Bedroom_Lamps_On
+  alias: Turn on Bedroom Lamps when Bedroom Chandelier is turned on
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_chandelier
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id:
+    - light.bedroom_dresser_lamps
+    - light.reagan_s_lamp
+    - light.glenda_s_lamp
+- id: automation.Bedroom_Lamps_Off
+  alias: Turn on Bedroom Lamps when Bedroom Chandelier is turned off
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_chandelier
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id:
+    - light.bedroom_dresser_lamps
+    - light.reagan_s_lamp
+    - light.glenda_s_lamp
+- id: automation.Upstairs_Lights_On
+  alias: Turn on Gameroom and Theater lights on when there is movement in gameroom or theater
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.gameroom_motion_motion
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.theater_motion_motion
+    to: 'on'
+  action:
+    entity_id: light.gameroom_pictures, light.theater_wall_sconces, light.theater_lamp,
+      light.bear_lamp
+    service: light.turn_on
+- id: automation.Upstairs_Lights_Off
+  alias: Turn off Gameroom and Theater lights 10 minutes after last movement in gameroom or theater
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.gameroom_motion_motion
+    for:
+      minutes: 10
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.theater_motion_motion
+    for:
+      minutes: 10
+    to: 'off'
+  action:
+    entity_id: light.gameroom_pictures, light.theater_wall_sconces, light.theater_lamp,
+      light.bear_lamp
+    service: light.turn_off
+- id: automation.Bear_Lamp_On
+  alias: Turn on Bear Lamp when Gameroom Accents are turned on
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.gameroom_pictures
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.bear_lamp
+- id: automation.Bear_Lamp_Off
+  alias: Turn off Bear Lamps when Gameroom Accents are turned off
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.gameroom_pictures
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.bear_lamp
+- id: automation.Theater_Lamp_On
+  alias: Turn on Theater Lamp when Theater Accents are turned on
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.theater_wall_sconces
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.theater_lamp
+- id: automation.Theater_Lamp_Off
+  alias: Turn off Theater Lamp when Theater Accents are turned off
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: light.theater_wall_sconces
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.theater_lamp
+- id: automation.Office_On
+  alias: Turn on Office when there is movement
+  initial_state: 'true'
+  trigger:
+    entity_id: binary_sensor.office_motion_motion
+    platform: state
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.office_sensor_illuminance
+    below: 12
+  action:
+    entity_id: scene.office_on
+    service: scene.turn_on
+- id: automation.Office_Off
+  alias: Turn off Office 10 minutes after last movement
+  initial_state: 'true'
+  trigger:
+    entity_id: binary_sensor.office_motion_motion
+    for:
+      minutes: 10
+    platform: state
+    to: 'off'
+  action:
+    entity_id: scene.office_off
+    service: scene.turn_on
+- id: Security_Accent_On
+  alias: Turn on Security and Accent Lights at Sunset
+  initial_state: 'true'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: 00:00:00
+  action:
+    entity_id: scene.landscape_on
+    service: scene.turn_on
+- id: Accent_Off
+  alias: Turn off Accent Lights at Bedtime
+  initial_state: 'true'
+  trigger:
+    platform: time
+    at: '23:00:00'
+  action:
+    entity_id: scene.bedtime
+    service: scene.turn_on
+- id: Security_Off
+  alias: Turn off Security Lights at Sunrise
+  initial_state: 'true'
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: -00:15:00
+  action:
+    entity_id: scene.landscape_off
+    service: scene.turn_on

@@ -1,0 +1,43 @@
+- platform: mqtt
+  name: "Entry Sensor"
+  state_topic: "smartthings/Entry Sensor/motion"
+- platform: mqtt
+  name: "Loggia Sensor"
+  state_topic: "smartthings/Loggia Sensor/motion"
+- platform: mqtt
+  name: "Gameroom Motion"
+  state_topic: "smartthings/Gameroom Motion/motion"
+- platform: mqtt
+  name: "Breezeway Door"
+  state_topic: "smartthings/Zone Breezeway Door/contact"
+- platform: mqtt
+  name: "Utility Loggia Door"
+  state_topic: "smartthings/Zone Patio Util Door/contact"
+- platform: mqtt
+  name: "Den Loggia Door"
+  state_topic: "smartthings/Zone Patio LivRm Doo/contact"
+- platform: mqtt
+  name: "Den Back Door"
+  state_topic: "smartthings/Zone Livingroom Back Door/contact"
+- platform: mqtt
+  name: "Front Door"
+  state_topic: "smartthings/Zone Front Door/contact"
+- platform: mqtt
+  name: "Gameroom South Door"
+  state_topic: "smartthings/Zone Gameroom Door L/contact"
+- platform: mqtt
+  name: "Gameroom North Door"
+  state_topic: "smartthings/Zone Gameroom Door R/contact"
+- platform: mqtt
+  name: "Theater Motion"
+  state_topic: "smartthings/Zone Theater Motion/contact"
+- platform: mqtt
+  name: "Theater Door"
+  state_topic: "smartthings/Zone Theater Door/contact"
+- platform: mqtt
+  name:  "Studio Doors"
+  state_topic: "smartthings/Zone Studio Doors/contact"
+- platform: mqtt
+  name: "Office Sensor"
+  state_topic: "smartthings/Office Sensor/motion"
+  

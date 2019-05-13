@@ -1,0 +1,103 @@
+- name: landscape_on
+  entities:
+    switch.landscape_accent_lights: true
+    switch.landscape_eave: true
+    switch.landscape_electric_plug: true
+    switch.landscape_security_lights: true
+    light.loggia_fireplace:
+      state: true
+      brightness: 85
+    light.entry_stairway_and_door:
+      state: true
+      brightness: 50
+    light.porte_cochere_downlights:
+      state: true
+      brightness: 64
+    light.front_porch_lanterns:
+      state: true
+      brightness: 85
+    light.backyard_porch_sconces:
+      state: true
+      brightness: 128
+    light.backyard_porch_bedroom_sconces:
+      state: true
+      brightness: 128
+
+- name: bedtime
+  entities:
+    switch.landscape_accent_lights: false
+    switch.landscape_eave: false
+# change electric plug to false for Christmas true for summer
+    switch.landscape_electric_plug: true
+    switch.landscape_security_lights: true
+    light.loggia_fireplace:
+      state: true
+      brightness: 85
+    light.entry_stairway_and_door:
+      state: true
+      brightness: 50
+    light.porte_cochere_downlights: false
+    light.front_porch_lanterns: false
+    light.backyard_porch_sconces: false
+    light.backyard_porch_bedroom_sconces: false
+
+- name: landscape_off
+  entities:
+    switch.landscape_accent_lights: false
+    switch.landscape_eave: false
+# change electric plug to false for Christmas; true for summer
+    switch.landscape_electric_plug: true
+    switch.landscape_security_lights: false
+    light.loggia_fireplace: false
+    light.entry_stairway_and_door: false
+    light.porte_cochere_downlights: false
+    light.front_porch_lanterns: false
+    light.backyard_porch_sconces: false
+    light.backyard_porch_bedroom_sconces: false
+
+- name: front_on
+  entities:
+    light.front_porch_downlights:
+      state: true
+      brightness: 128    
+    light.library_chandelier:
+      state: true
+      brightness: 128
+    light.library_downlights:
+      state: true
+      brightness: 128
+    light.entry_chandelier:
+      state: true
+      brightness: 128
+    switch.entry_lamp:
+      state: true
+
+- name: front_off
+  entities:
+    light.front_porch_downlights:
+      state: false
+    light.library_chandelier:
+      state: false
+    light.library_downlights:
+      state: false
+    light.entry_chandelier:
+      state: false
+    switch.entry_lamp:
+      state: false
+# brightness is in hex so  128 is 50%
+# brightness of 256 is 100%
+- name: office_on
+  entities:
+    light.library_downlights:
+      state: true
+      brightness: 256
+    light.library_chandelier:
+      state: true
+      brightness: 256
+
+- name: office_off
+  entities:
+    light.library_downlights:
+      state: false
+    light.library_chandelier:
+      state: false

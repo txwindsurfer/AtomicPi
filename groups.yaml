@@ -1,0 +1,177 @@
+  default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - sun.sun
+      - group.Camera
+      - device_tracker.reagansphone
+      - device_tracker.glendasphone
+      - alarm_control_panel.mqtt_alarm
+      - sensor.weather_symbol
+      - sensor.weather_temperature
+      - sensor.front_door
+      - sensor.breezeway_door
+      - sensor.utility_loggia_door
+      - sensor.den_loggia_door
+      - sensor.den_back_door
+      - sensor.gameroom_north_door
+      - sensor.gameroom_south_door
+      - sensor.theater_door
+      - sensor.studio_doors
+      - group.HouseSensors
+  Camera: camera.foscam_camera
+  HouseSensors:
+    name: House Doors
+    entities:
+    - lock.breezeway_lock
+    - lock.garage_lock
+
+  LivingArea:
+    name: Den
+    view: yes
+    entities:
+      - group.LivingRoom
+      - group.LivingRoomMedia
+      - group.BackPorch
+      - group.DenSensors
+  LivingRoom: 
+  - light.living_room_chandelier
+  - light.living_room_downlights
+  - light.living_room_fireplace
+  - light.living_room_picture_accents
+  - light.bird_lights
+  - light.bird_lamps
+  - light.living_room_bar_accents
+  - light.living_room_bar_downlight
+  LivingRoomMedia: switch.watch_livingroom_tv
+# media_player.living_room_un65ks8500, media_player.living_room_tv, media_player.living_room
+  BackPorch:
+    name: Back Porch
+    entities: light.backyard_porch_sconces, light.backyard_porch_bedroom_sconces
+  DenSensors: 
+    name: Doors/Sensors
+    entities: sensor.breezeway_door, sensor.utility_loggia_door, sensor.den_loggia_door, sensor.den_back_door, sensor.guest_bathroom_sensor
+
+  MasterBed:
+    name: Bedroom
+    view: yes
+    entities:
+      - group.Bedroom
+      - group.Bathroom
+      - group.BedroomMedia
+  Bedroom:
+    entities:
+    - light.master_bedroom_chandelier
+    - light.master_bedroom_downlights
+    - light.bedroom_dresser_lamps
+    - light.reagans_lamp
+    - light.glendas_lamp
+  Bathroom: light.master_bathroom_chandelier, light.master_bathroom_vanity
+  BedroomMedia: switch.watch_bedroom_tv
+#, media_player.bedroom, media_player.bedroom_speaker, media_player.bedroom_tv
+
+  KitchenArea:
+    name: Kitchen
+    view: yes
+    entities:
+      - group.Kitchen
+      - group.GuestBathroom
+      - group.UtilityHall
+  Kitchen: light.kitchen_cabinet, light.kitchen_downlights, light.kitchen_chandelier, light.kitchen_task, media_player.kitchen_speaker
+  GuestBathroom: 
+    name: Guest Bathroom
+    entities: light.guest_bath_vanity
+  UtilityHall:
+    name: Utility Hall
+    entities: light.utility_hall_chandelier, light.utility_hall_downlight
+  
+  Front:
+    view: yes
+    entities:
+      - group.Entry
+      - sensor.entry_sensor
+      - sensor.front_door
+      - sensor.office_sensor
+      - group.Library
+      - group.DiningRoom
+      - group.ButlerPantry
+      - group.FrontPorch
+  Library: light.library_downlights, light.library_chandelier
+  ButlerPantry: 
+    name: Butler Pantry
+    entities: light.butler_pantry_cabinets, light.butler_pantry_downlight
+  DiningRoom: 
+    name: Dining Room
+    entities: light.dining_room_accents, light.dining_room_chandelier
+  Entry:
+    entities:
+      - light.entry_chandelier
+      - light.entry_hall_pictures
+      - light.entry_picture
+      - light.entry_pathway
+      - light.entry_stairway_and_door
+      - light.entry_wall_plugs
+      - light.entry_wall_wash
+      - switch.entry_lamp
+  FrontPorch:
+    name: Front Porch
+    entities: light.front_porch_lanterns, light.front_porch_downlights, light.front_porch_security_spots 
+    
+
+  Upstairs:
+    view: yes
+    entities:
+      - group.Gameroom
+      - group.GameroomPorch
+      - group.GameroomMedia
+      - group.Theater
+      - group.TheaterMedia
+      - group.Studio
+      - group.StudioPorch
+      - group.UpstairsSensors
+  Gameroom:
+    entities: 
+    - light.gameroom_cabinets
+    - light.gameroom_downlights
+    - light.gameroom_pictures
+    - light.gameroom_pool_table
+    - light.bear_lamp
+  GameroomMedia: switch.watch_gameroom_tv
+# remote.ramsower_home, media_player.gameroom_speaker, media_player.gameroom_tv
+  GameroomPorch:
+    name: Gameroom Porch
+    entities: light.gameroom_porch_left_downlights, light.gameroom_porch_right_downlights, light.gameroom_porch_sconces, light.gameroom_hall_downlights, light.gameroom_upstairs_window_wash
+  Studio: switch.studio_lights
+# media_player.studio_tv
+  StudioPorch: light.studio_porch_downlights, light.studio_porch_lanterns
+  Theater: light.theater_downlights, light.theater_wall_sconces, light.theater_lamp
+  TheaterMedia: switch.watch_theater_tv
+# remote.theater,media_player.theater_tv
+  UpstairsSensors: sensor.gameroom_motion, sensor.theater_motion, climate.gameroom, climate.brownroom, climate.kidsroom, climate.yellowroom, climate.theater
+
+
+  Outside:
+    view: yes
+    entities:
+      - group.Plaza
+      - group.Loggia
+      - group.Breezeway
+      - group.Landscape
+  Plaza: light.fountain
+  Loggia: light.bears_fan, light.loggia_downlights, light.loggia_fireplace, sensor.loggia_sensor
+  Landscape:
+    control: hidden
+    entities: light.landscape_accent_lights, light.landscape_eave, light.landscape_electric_plug, light.landscape_security_lights
+  Breezeway: light.porte_cochere_downlights, camera.foscam
+
+  House:
+    view: yes
+    entities:
+      - switch.hot_water_heater
+      - group.Security
+#  Security:  light.panel_area_security_button
+
+  LBJ:
+    view: yes
+    entities:
+      - light.golf_cart_charger

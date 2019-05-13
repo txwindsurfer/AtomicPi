@@ -1,0 +1,70 @@
+- platform: mqtt
+  name: "Bird Lights"
+  state_topic: "smartthings/Bird Lamps/switch"
+  command_topic: "smartthings/Bird Lamps/switch"
+  brightness_state_topic: "smartthings/Bird Lamps/level"
+  brightness_command_topic: "smartthings/Bird Lamps/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Bedroom Dresser Lamps"
+  state_topic: "smartthings/Bedroom Dresser Lamps/switch"
+  command_topic: "smartthings/Bedroom Dresser Lamps/switch"
+  brightness_state_topic: "smartthings/Bedroom Dresser Lamps/level"
+  brightness_command_topic: "smartthings/Bedroom Dresser Lamps/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Reagan's Lamp"
+  state_topic: "smartthings/Reagan's Lamp/switch"
+  command_topic: "smartthings/Reagan's Lamp/switch"
+  brightness_state_topic: "smartthings/Reagan's Lamp/level"
+  brightness_command_topic: "smartthings/Reagan's Lamp/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Glenda's Lamp"
+  state_topic: "smartthings/Glenda's Lamp/switch"
+  command_topic: "smartthings/Glenda's Lamp/switch"
+  brightness_state_topic: "smartthings/Glenda's Lamp/level"
+  brightness_command_topic: "smartthings/Glenda's Lamp/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Theater Lamp"
+  state_topic: "smartthings/Theater Lamp/switch"
+  command_topic: "smartthings/Theater Lamp/switch"
+  brightness_state_topic: "smartthings/Theater Lamp/level"
+  brightness_command_topic: "smartthings/Theater Lamp/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Bear Lamp"
+  state_topic: "smartthings/Bear Lamp/switch"
+  command_topic: "smartthings/Bear Lamp/switch"
+  brightness_state_topic: "smartthings/Bear Lamp/level"
+  brightness_command_topic: "smartthings/Bear Lamp/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: mqtt
+  name: "Theater Lamp"
+  state_topic: "smartthings/Theater Lamp/switch"
+  command_topic: "smartthings/Theater Lamp/switch"
+  brightness_state_topic: "smartthings/Theater Lamp/level"
+  brightness_command_topic: "smartthings/Theater Lamp/level"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+- platform: switch
+  name: Studio Lights
+  entity_id: switch.studio_lights_2
+- platform: switch
+  name: Entry Lamp
+  entity_id: switch.entry_lamp_2
+

@@ -1,0 +1,153 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 160.2
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+  # Customization file
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+frontend:
+  extra_html_url:
+    - /local/hass-bha-icons.html
+
+stream:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+#  ssl_certificate: !secret ssl_cert
+#  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+
+# Discover some devices automatically
+discovery:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret config_url
+
+lutron:
+  host: 192.168.1.202
+  username: !secret lutron_uname
+  password: !secret lutron_pass
+  
+camera:
+  - platform: foscam
+    ip: !secret foscam_ip
+    port: !secret foscam_port
+    username: !secret camera_uname
+    password: !secret foscam_pass
+  - platform: generic
+    still_image_url: !secret breezeway_snap
+    stream_source: !secret breezeway_stream
+    username: !secret camera_uname
+    password: !secret foscam_pass
+    verify_ssl: false
+    
+mqtt:
+  broker: !secret mqtt_ip
+  port: 1883
+  protocol: 3.1
+  keepalive: 60
+  discovery: true
+  discovery_prefix: smartthings
+#  client_id: smartthings_x2 must be unique.  default is random
+  username: !secret mqtt_uname
+  password: !secret mqtt_pass
+
+#lock:
+#  - platform: mqtt
+#    name: Breezeway Lock
+#    command_topic:  'smartthings/Breezeway Lock/lock'
+#    state_topic: 'smartthings/Breezeway Lock/lock'
+#    payload_lock: "locked"
+#    payload_unlock: "unlocked"
+#  - platform: mqtt
+#    name: Garage Lock
+#    command_topic:  'smartthings/Garage Lock/lock'
+#    state_topic: 'smartthings/Garage Lock/lock'
+#    payload_lock: "locked"
+#    payload_unlock: "unlocked"
+
+
+device_tracker:
+  - platform: mqtt
+    devices:
+      glendasphone: "smartthings/Glenda Ramsower's Galaxy Note9/presence"
+      reagansphone: "smartthings/Reagan Ramsower's RMR-Note8/presence"
+
+person:
+- name: reagan_ramsower
+  id: txwindsurfer
+  user_id: fd4d02712afa402abfbb3fb19da3378c
+  device_trackers: device_tracker.reagansphone
+- name: glenda_ramsower
+  id: clayspace
+  device_trackers: device_tracker.glandasphone
+  
+media_player:
+- platform: spotify
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
+  
+light:
+- platform: decora_wifi
+  username: !secret leviton_uname
+  password: !secret leviton_pass
+
+sensor:
+# Weater prediction
+- platform: yr
+  name: Weather
+  forecast: 24
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windSpeed
+    - pressure
+    - windDirection
+    - humidity
+    - fog
+    - cloudiness
+    - lowClouds
+    - mediumClouds
+    - highClouds
+    - dewpointTemperature
+    
+#group: !include groups.yaml # not needed with frontend
+automation: !include automations.yaml
+script: !include scripts.yaml
+# light: !include lights.yaml # mqtt lights
+# switch: !include switches.yaml # mqtt switches
+# sensor: !include sensors.yaml # mqtt sensors
+# climate: !include climate.yaml # mqtt thermostats
+scene: !include scene.yaml
+
+logger:
+  default: warning
+#  logs:
+#    pylutron: debug
+#    pylutron.discovery: debut
+#    homeassistant.components.cast.media_player: debug
+#    pychromecast: debug
+#    pychromecast.discovery: debug
+#    pychromecast.socket_client: debug
+#    zeroconf: debug
+#    homeassistant.components.smartthings: debug
